@@ -14,6 +14,10 @@ containers:
     image: . # Set by pipeline
     variables:
       Hello: World
+      CACHE_HOST: ${resources.cache.host}
+      CACHE_PORT: ${resources.cache.port}
+      CACHE_USER: ${resources.cache.username}
+      CACHE_PASS: ${resources.cache.password}
 
 resources:
   dns: # We need a DNS record to point to the service 
@@ -24,3 +28,5 @@ resources:
       host: ${resources.dns.host}
       path: /
       port: 80
+  cache:
+    type: redis
